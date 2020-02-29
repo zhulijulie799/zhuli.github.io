@@ -5,19 +5,19 @@
   
 
   
-  <title>Reflection in .Net | zhuli&#39;s blog</title>
+  <title>Database Design | zhuli&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="元数据允许我们用c#写组件,让我们使用元数据构建vb.net应用，类型的描述允许运行时部署内存中的对象加强了类型安全性，版本的兼容性 反射是在运行时读取元数据，反射可以动态的调用方法，属性，类型事件，也可允许我们在运行时创建新的类型System.Object 的成员方法 GetType 返回System.Type  System.Type是主要的元数据入口  System.Type 继承自 Sys">
+  <meta name="description" content="数据库设计（三大范式，索引，约束）三大范式第一范式（确保每列保持原子性）第二范式（确保表中的每列都是和主键相关）第三范式（确保每列都和主键列直接相关，而不是间接相关） 约束：唯一性、主键约束、外键约束、检查约束、空值约束、默认值约束 加explain看看查询语句的执行计划有介绍什么样的筛选条件可能会使索引失效单列索引、组合索引索引提高了查询速度，同时降低了更新表的速度，因为更新表时，不仅要保存数据">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reflection in .Net">
-<meta property="og:url" content="https://zhulijulie799.github.io/2020/02/29/Reflection-in-Net/index.html">
+<meta property="og:title" content="Database Design">
+<meta property="og:url" content="https://zhulijulie799.github.io/2020/02/29/Database-Design/index.html">
 <meta property="og:site_name" content="zhuli&#39;s blog">
-<meta property="og:description" content="元数据允许我们用c#写组件,让我们使用元数据构建vb.net应用，类型的描述允许运行时部署内存中的对象加强了类型安全性，版本的兼容性 反射是在运行时读取元数据，反射可以动态的调用方法，属性，类型事件，也可允许我们在运行时创建新的类型System.Object 的成员方法 GetType 返回System.Type  System.Type是主要的元数据入口  System.Type 继承自 Sys">
+<meta property="og:description" content="数据库设计（三大范式，索引，约束）三大范式第一范式（确保每列保持原子性）第二范式（确保表中的每列都是和主键相关）第三范式（确保每列都和主键列直接相关，而不是间接相关） 约束：唯一性、主键约束、外键约束、检查约束、空值约束、默认值约束 加explain看看查询语句的执行计划有介绍什么样的筛选条件可能会使索引失效单列索引、组合索引索引提高了查询速度，同时降低了更新表的速度，因为更新表时，不仅要保存数据">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-02-29T09:09:58.440Z">
+<meta property="og:updated_time" content="2020-02-29T09:22:25.194Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reflection in .Net">
-<meta name="twitter:description" content="元数据允许我们用c#写组件,让我们使用元数据构建vb.net应用，类型的描述允许运行时部署内存中的对象加强了类型安全性，版本的兼容性 反射是在运行时读取元数据，反射可以动态的调用方法，属性，类型事件，也可允许我们在运行时创建新的类型System.Object 的成员方法 GetType 返回System.Type  System.Type是主要的元数据入口  System.Type 继承自 Sys">
+<meta name="twitter:title" content="Database Design">
+<meta name="twitter:description" content="数据库设计（三大范式，索引，约束）三大范式第一范式（确保每列保持原子性）第二范式（确保表中的每列都是和主键相关）第三范式（确保每列都和主键列直接相关，而不是间接相关） 约束：唯一性、主键约束、外键约束、检查约束、空值约束、默认值约束 加explain看看查询语句的执行计划有介绍什么样的筛选条件可能会使索引失效单列索引、组合索引索引提高了查询速度，同时降低了更新表的速度，因为更新表时，不仅要保存数据">
   
     <link rel="alternate" href="/atom.xml" title="zhuli&#39;s blog" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Reflection-in-Net" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Database-Design" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/02/29/Reflection-in-Net/" class="article-date">
-  <time datetime="2020-02-29T09:09:34.000Z" itemprop="datePublished">2020-02-29</time>
+    <a href="/2020/02/29/Database-Design/" class="article-date">
+  <time datetime="2020-02-29T09:21:40.000Z" itemprop="datePublished">2020-02-29</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Reflection in .Net
+      Database Design
     </h1>
   
 
@@ -90,20 +90,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>元数据允许我们用c#写组件,让我们使用元数据构建vb.net应用，类型的描述允许运行时部署内存中的对象<br>加强了类型安全性，版本的兼容性</p>
-<p>反射是在运行时读取元数据，反射可以动态的调用方法，属性，类型事件，也可允许我们在运行时创建新的类型<br>System.Object 的成员方法 GetType 返回System.Type  System.Type是主要的元数据入口 </p>
-<p>System.Type 继承自 System.Reflection.MemberInfo</p>
-<p>MemberInfo 是 其它描述属性、方法、控制器信息、参数信息、事件类的基类</p>
-<p>GetProperties方法可以获得许多对象属性信息数组 PropertyInfo给数组中的每一个对象一个名称属性</p>
-<p>也可以用反射在运行时创建实例,绑定类型到存在的对象，从存在的对象获得类型</p>
-<p>Assemblies包括modules,modules包括types,types包括members<br>反射提供对象封装assemblies,modules,types</p>
-<p>典型的反射的使用包括：<br>1.Use Assembly<br>2.Use Module<br>3.Use ConstructorInfo<br>4.MethodInfo<br>5.FieldInfo<br>6.EventInfo<br>7.PropertyInfo<br>8.ParameterInfo<br>9.CustomAttributeData</p>
-<p>怎么回去到Assembly 和 Type 类</p>
+        <p>数据库设计（三大范式，索引，约束）<br>三大范式<br>第一范式（确保每列保持原子性）<br>第二范式（确保表中的每列都是和主键相关）<br>第三范式（确保每列都和主键列直接相关，而不是间接相关）</p>
+<p>约束：唯一性、主键约束、外键约束、检查约束、空值约束、默认值约束</p>
+<p>加explain看看查询语句的执行计划<br>有介绍什么样的筛选条件可能会使索引失效<br>单列索引、组合索引<br>索引提高了查询速度，同时降低了更新表的速度，因为更新表时，不仅要保存数据，还要保存索引文件，会占用磁盘空间<br>普通索引、唯一索引</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhulijulie799.github.io/2020/02/29/Reflection-in-Net/" data-id="ck77ed9rl0002n8uu04xbfhuz" class="article-share-link">Share</a>
+      <a data-url="https://zhulijulie799.github.io/2020/02/29/Database-Design/" data-id="ck77ed9rr0003n8uug5asjr2n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -112,19 +106,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/02/29/Database-Design/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Database Design
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/02/29/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/02/29/Reflection-in-Net/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">Reflection in .Net</div>
     </a>
   
 </nav>
