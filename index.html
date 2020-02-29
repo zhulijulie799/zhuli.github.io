@@ -66,6 +66,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Reflection-in-Net" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/29/Reflection-in-Net/" class="article-date">
+  <time datetime="2020-02-29T09:09:34.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/29/Reflection-in-Net/">Reflection in .Net</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>元数据允许我们用c#写组件,让我们使用元数据构建vb.net应用，类型的描述允许运行时部署内存中的对象<br>加强了类型安全性，版本的兼容性</p>
+<p>反射是在运行时读取元数据，反射可以动态的调用方法，属性，类型事件，也可允许我们在运行时创建新的类型<br>System.Object 的成员方法 GetType 返回System.Type  System.Type是主要的元数据入口 </p>
+<p>System.Type 继承自 System.Reflection.MemberInfo</p>
+<p>MemberInfo 是 其它描述属性、方法、控制器信息、参数信息、事件类的基类</p>
+<p>GetProperties方法可以获得许多对象属性信息数组 PropertyInfo给数组中的每一个对象一个名称属性</p>
+<p>也可以用反射在运行时创建实例,绑定类型到存在的对象，从存在的对象获得类型</p>
+<p>Assemblies包括modules,modules包括types,types包括members<br>反射提供对象封装assemblies,modules,types</p>
+<p>典型的反射的使用包括：<br>1.Use Assembly<br>2.Use Module<br>3.Use ConstructorInfo<br>4.MethodInfo<br>5.FieldInfo<br>6.EventInfo<br>7.PropertyInfo<br>8.ParameterInfo<br>9.CustomAttributeData</p>
+<p>怎么回去到Assembly 和 Type 类</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhulijulie799.github.io/2020/02/29/Reflection-in-Net/" data-id="ck77dx8pi0002e4uuit78oxyn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/02/29/hello-world/" class="article-date">
@@ -105,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhulijulie799.github.io/2020/02/29/hello-world/" data-id="ck77c2ixu0001rwuupwnazy66" class="article-share-link">Share</a>
+      <a data-url="https://zhulijulie799.github.io/2020/02/29/hello-world/" data-id="ck77dx8pa0001e4uu2jgqcf80" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhulijulie799.github.io/2019/08/27/first-blog/" data-id="ck77c2ixj0000rwuu7b0oubi7" class="article-share-link">Share</a>
+      <a data-url="https://zhulijulie799.github.io/2019/08/27/first-blog/" data-id="ck77dx8p50000e4uurxnot89e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,6 +276,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/02/29/Reflection-in-Net/">Reflection in .Net</a>
+          </li>
         
           <li>
             <a href="/2020/02/29/hello-world/">Hello World</a>
