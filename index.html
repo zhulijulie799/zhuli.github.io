@@ -66,6 +66,46 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Delegate-and-Event-in-Net" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/29/Delegate-and-Event-in-Net/" class="article-date">
+  <time datetime="2020-02-29T09:30:20.000Z" itemprop="datePublished">2020-02-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/29/Delegate-and-Event-in-Net/">Delegate and Event in .Net</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ThresholdReachedEventArgs : EventArgs</span><br><span class="line">   &#123;</span><br><span class="line">       public int Threshold &#123; get; <span class="built_in">set</span>; &#125;</span><br><span class="line">       public DateTime TimeReached &#123; get; <span class="built_in">set</span>; &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Counter</span><br><span class="line">   &#123;</span><br><span class="line">       public event EventHandler ThresholdReached;</span><br><span class="line"></span><br><span class="line">       public virtual void OnThresholdReached(EventArgs e)</span><br><span class="line">       &#123;</span><br><span class="line">           EventHandler handler = ThresholdReached;</span><br><span class="line">           handler?.Invoke(this, e);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">   &#123;</span><br><span class="line">       public delegate void ThresholdReachedEventHandler(object sender, ThresholdReachedEventArgs e);</span><br><span class="line"></span><br><span class="line">       public static ThresholdReachedEventArgs arg = new ThresholdReachedEventArgs &#123; Threshold = 1, TimeReached = DateTime.Now &#125;;</span><br><span class="line">       static void Main(string[] args)</span><br><span class="line">       &#123;</span><br><span class="line">           var c = new Counter();</span><br><span class="line">           c.ThresholdReached += c_ThresholdReached;</span><br><span class="line">           c.OnThresholdReached(arg);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       static void c_ThresholdReached(object sender, EventArgs e)</span><br><span class="line">       &#123;</span><br><span class="line">           var array = e.GetType().GetProperties();</span><br><span class="line">           <span class="keyword">for</span> (int i = 0; i &lt; array.Length; i++)</span><br><span class="line">           &#123; </span><br><span class="line">               Console.WriteLine(array[i].GetValue(arg));</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhulijulie799.github.io/2020/02/29/Delegate-and-Event-in-Net/" data-id="ck77evbt50004e4uu229e6p5u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Database-Design" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/02/29/Database-Design/" class="article-date">
@@ -95,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhulijulie799.github.io/2020/02/29/Database-Design/" data-id="ck77ed9rr0003n8uug5asjr2n" class="article-share-link">Share</a>
+      <a data-url="https://zhulijulie799.github.io/2020/02/29/Database-Design/" data-id="ck77evbsq0000e4uujyifxdr7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhulijulie799.github.io/2020/02/29/Reflection-in-Net/" data-id="ck77ed9rl0002n8uu04xbfhuz" class="article-share-link">Share</a>
+      <a data-url="https://zhulijulie799.github.io/2020/02/29/Reflection-in-Net/" data-id="ck77evbsw0001e4uu2e1thjr9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhulijulie799.github.io/2020/02/29/hello-world/" data-id="ck77ed9rj0001n8uutc52opi0" class="article-share-link">Share</a>
+      <a data-url="https://zhulijulie799.github.io/2020/02/29/hello-world/" data-id="ck77evbsy0002e4uuai8gqfkx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -276,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhulijulie799.github.io/2019/08/27/first-blog/" data-id="ck77ed9rd0000n8uuq79wlcde" class="article-share-link">Share</a>
+      <a data-url="https://zhulijulie799.github.io/2019/08/27/first-blog/" data-id="ck77evbt10003e4uur5wb17lt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -315,6 +355,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/02/29/Delegate-and-Event-in-Net/">Delegate and Event in .Net</a>
+          </li>
         
           <li>
             <a href="/2020/02/29/Database-Design/">Database Design</a>
